@@ -13,7 +13,7 @@ function start() {
   db.query("SELECT * FROM products", function(err, res) {
     if (err) throw err;
     for (var i in res) {
-      console.log(`${res[i].item_id} || ${res[i].product_name} || $${res[i].price} || ${res[i].stock_quantity}`);
+      console.log(`${res[i].item_id} || ${res[i].product_name} || $${res[i].price}`);
     }
     selectProduct();
   });
@@ -47,16 +47,20 @@ function selectProduct() {
             }
             var itemId = chosenItem.item_id,
             product = chosenItem.product_name,
+            cost = chosenItem.price,
             currentStock = chosenItem.stock_quantity;
 
             if (choice <= itemId) {
               console.log("Found a match for " + product + "!");
               var updatedStock = currentStock - requestedQuantity;
+                  totalCost = cost * requestedQuantity,
+                  totalCost = totalCost.toFixed(2);
 
               db.query("UPDATE products SET ? WHERE ?",
               [{stock_quantity: updatedStock}, {item_id: choice}],
               function(err, res) {
-                console.log("Current amount: " + updatedStock);
+                console.log(`Thank you for your ${requestedQuantity}
+                  order(s) of ${product}. The total amount due is ${totalCost}.`);
               });
 
             } else {
