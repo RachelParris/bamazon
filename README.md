@@ -1,4 +1,4 @@
-# bamazon
+# Bamazon
 
 A simple CLI program which uses Node.js and mySQL. It displays all products that are listed in the database.
 
@@ -17,3 +17,14 @@ The customer is informed that there is not enough inventory for that item and as
 ![Successful order](screen3.png)
 
 The customer made a successful purchase.
+
+### Built With
+
+* JavaScript
+* Node
+* mySQL
+
+
+### Contributers
+
+* Rachel Parris
